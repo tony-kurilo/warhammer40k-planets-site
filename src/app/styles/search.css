@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+    height:100vh;
+    position: relative;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.planet-input{
+    color: #6ffb6f;
+    background: #121212;
+    height: 40px;
+    width: calc(100vw / 5);
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 2px #6ffb6f;
+    border-radius: 2px;
+}
+.planet-input:focus{
+    border: solid 4px #6ffb6f;
+}
+.planet-input::placeholder{
+    color: #2c822c;
+    font-size: 16px;
+    position: absolute;
+
+}
