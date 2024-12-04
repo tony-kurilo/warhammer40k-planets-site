@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             return res.status(404).send("No planets");
         }
 
-        res.status(200).send(result.rows);
+        return res.status(200).json(result.rows || []);
     } else {
         return res.status(405).send("No planets");
     }
