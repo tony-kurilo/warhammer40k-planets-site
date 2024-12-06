@@ -1,4 +1,5 @@
 import Layout from './components/Layout';
+import {Suspense} from "react";
 
 export default async function Page(){
     try {
@@ -6,7 +7,9 @@ export default async function Page(){
         let data = await res.json();
 
         return (
-            <Layout planets_data={data}></Layout>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Layout planets_data={data} />
+            </Suspense>
         )
     } catch (error) {
         console.error('Failed to fetch planets data:', error);

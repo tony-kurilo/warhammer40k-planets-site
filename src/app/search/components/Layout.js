@@ -1,6 +1,6 @@
 'use client'
 import '../../styles/search.css';
-import {useState} from "react";
+import {useState, Suspense} from "react";
 import {useSearchParams, usePathname, useRouter, redirect} from "next/navigation";
 
 export default function Layout({planets_data}) {
@@ -33,37 +33,38 @@ export default function Layout({planets_data}) {
     }
 
     function handleRedirect(id){
-        redirect(`/planet/${id}`);
+        replace(`/planet/${id}`);
     }
 
     return (
-        <div>
-            <div className={"container"}>
-                <div className={"text-primary-text-color center text-center"}>
-                    <h1 className={''}>Welcome back</h1>
-                    <h1 className={'mb-4'}>Praise the Omnissiah, tech-priest !</h1>
-                    <input
-                        type={'text'}
-                        className={"planet-input mb-4"}
-                        placeholder={"start entering the planet"}
-                        value = {search}
-                        onChange={(e) => handleSearch(e.target.value)}
-                        defaultValue={searchParams.get('query')?.toString()}
-                    >
-                    </input>
-                    <div>
-                        {filteredList.map((item) => (
-                            <div key={item.id}
-                                 className={`planet-item`}
-                                onClick={(e) => handleRedirect(item.id)}
-                            >
-                                <h1>{item.name}</h1>
-                                <h2>Segmentum {item.segmentum}</h2>
-                            </div>
-                        ))}
+        <Suspense fallback={<div className={'text-primary-text-color'}>Loading data...</div>}>
+            <div>
+                <div className={"container"}>
+                    <div className={"text-primary-text-color center text-center"}>
+                        <h1>Welcome back</h1>
+                        <h1 className={'mb-4'}>Praise the Omnissiah, tech-priest!</h1>
+                        <input
+                            type={'text'}
+                            className={"planet-input mb-4"}
+                            placeholder={"start entering the planet"}
+                            value={search}
+                            onChange={(e) => handleSearch(e.target.value)}
+                            defaultValue={searchParams.get('query')?.toString()}
+                        />
+                        <div>
+                            {filteredList.map((item) => (
+                                <div key={item.id}
+                                     className={`planet-item`}
+                                     onClick={() => handleRedirect(item.id)}
+                                >
+                                    <h1>{item.name}</h1>
+                                    <h2>Segmentum {item.segmentum}</h2>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Suspense>
     )
 }
