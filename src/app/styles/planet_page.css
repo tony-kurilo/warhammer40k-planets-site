@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background-color: #121212;
+}
+h1{
+    font-size: 1.5rem;
+}
+h2{
+    color: #159f15;
+    font-size: 1.2rem;
+}
+
+.planet-info-container{
+    border: #6ffb6f solid 4px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+}
