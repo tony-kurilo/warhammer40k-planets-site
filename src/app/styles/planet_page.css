@@ -13,10 +13,38 @@ h2{
     color: #159f15;
     font-size: 1.2rem;
 }
+.back-to-search{
+    color: #6ffb6f;
+}
+.back-to-search:hover{
+    color: #159f15;
+}
+.center-container{
+    width: 80%;
+    margin: 40px auto;
 
+}
+.content-display{
+    border: #6ffb6f solid 4px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+}
 .planet-info-container{
     border: #6ffb6f solid 4px;
     width: 80%;
     margin: 40px auto;
     padding: 20px;
+}
+.event-button{
+    color: #6ffb6f;
+    padding: 5px;
+}
+.event-button:hover{
+    background-color:  #6ffb6f;
+    color:black;
+}
+.event-button.active{
+    background-color:  #6ffb6f;
+    color:black;
 }
