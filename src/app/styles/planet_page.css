@@ -19,26 +19,31 @@ h2{
 .back-to-search:hover{
     color: #159f15;
 }
-.center-container{
-    width: 80%;
-    margin: 40px auto;
-
-}
-.content-display{
-    border: #6ffb6f solid 4px;
-    width: 80%;
-    margin: 40px auto;
-    padding: 20px;
-}
 .planet-info-container{
     border: #6ffb6f solid 4px;
     width: 80%;
     margin: 40px auto;
     padding: 20px;
 }
+.planet-info{
+    display: flex;
+}
+.info-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 элементов в строке */
+    gap: 14px; /* Расстояние между элементами */
+}
+
+.info-row > div {
+    text-align: left; /* Пример стилизации для всех элементов */
+}
+.center-container{
+    margin: 0 auto;
+    width: 80%;
+}
 .event-button{
     color: #6ffb6f;
-    padding: 5px;
+    padding: 10px;
 }
 .event-button:hover{
     background-color:  #6ffb6f;
@@ -47,4 +52,86 @@ h2{
 .event-button.active{
     background-color:  #6ffb6f;
     color:black;
+}
+.content-display{
+    text-align: center;
+}
+.content-box{
+    border: #6ffb6f solid 4px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+}
+.responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-width: 400px; /* Максимальная ширина для контроля */
+    margin: 0 auto;   /* Центрирование */
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    .planet-info{
+        flex-direction: column;
+    }
+    .info-row {
+        grid-template-columns: 1fr; /* Один элемент в строке */
+    }
+    .center-container{
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    .info-row {
+        grid-template-columns: repeat(2, 1fr); /* Два элемента в строке */
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1920px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    a{
+        font-size: 1.2rem;
+    }
+    button{
+        font-size: 1.2rem;
+    }
+    p{
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1921px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    a{
+        font-size: 1.4rem;
+    }
+    button{
+        font-size: 1.4rem;
+    }
+    p{
+        font-size: 1.4rem;
+    }
 }
