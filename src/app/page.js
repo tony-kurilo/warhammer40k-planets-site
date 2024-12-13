@@ -2,8 +2,11 @@
 
 import "./styles/terminal.css"
 import {useEffect} from "react";
+import {useRouter} from "next/navigation";
 
 export default function Home() {
+    const router = useRouter()
+
     useEffect(()=> {
         let TerminalEmulator = {
             init: function(screen) {
@@ -83,7 +86,7 @@ export default function Home() {
                 })
             },
 
-            redirect : function (time,busy) {
+            redirect : function( time, busy ) {
                 busy = (busy === undefined ) ? true : busy;
                 return new Promise( (resolve, reject) => {
                     if (busy){
@@ -93,9 +96,8 @@ export default function Home() {
                     }
                     setTimeout( () => {
                         resolve();
-                        window.location.replace("/search");
+                        router.push('/search')
                     }, time);
-
                 });
             },
 
@@ -176,10 +178,10 @@ export default function Home() {
             .then( TE.wait.bind(TE, 400) )
             .then( TE.enterCommand.bind( TE ) )
             .then( TE.enterResponse.bind(TE, 'Opening service...') )
-            .then (TE.redirect.bind(TE, 3400))
+            .then(TE.redirect.bind(TE, 2000))
     }, []);
   return (
-    <div className={"screen uppercase ibm-plex-mono-thin "}>
+    <div className={"screen uppercase "}>
         <div id="screen" className="terminal_emulator">
         </div>
     </div>

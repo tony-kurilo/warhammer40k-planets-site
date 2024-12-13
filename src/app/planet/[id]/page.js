@@ -1,5 +1,7 @@
 'use server'
 import Layout from './components/Layout';
+import Loading from './loading';
+import {Suspense} from "react";
 
 export async function generateStaticParams() {
     try {
@@ -25,10 +27,11 @@ export default async function Page({ params }) {
             throw new Error(`Failed to fetch planet: ${res.statusText}`);
         }
         const data = await res.json();
-        console.log("Fetched planet data:", data); // Логирование данных
 
         return (
-            <Layout planets_data={data}></Layout>
+            <Suspense fallback={<Loading />}>
+                <Layout planets_data={data}></Layout>
+            </Suspense>
         );
     } catch (error) {
         console.error("Error fetching planet data:", error);

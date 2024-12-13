@@ -1,0 +1,65 @@
+
+.container {
+    height: 80vh; /* Высота на весь экран */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center; /* Центрирует текст */
+}
+
+.image {
+    margin-bottom: 1rem; /* Отступ снизу для визуального разделения */
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.planet-input{
+    color: #6ffb6f;
+    background: #121212;
+    height: 40px;
+    width: calc(100vw / 4.4);
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 2px #6ffb6f;
+    border-radius: 2px;
+}
+.planet-input:focus{
+    border: solid 4px #6ffb6f;
+}
+.planet-input::placeholder{
+    color: #159f15;
+    font-size: 16px;
+    position: absolute;
+
+}
+
+.planet-item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    width: calc(100vw / 4.4);
+}
+.planet-item:hover{
+    background: #6ffb6f;
+    cursor: pointer;
+    color: #081508;
+}
+
+.planet-item h1{
+    font-size: 22px;
+}
+.planet-item h2{
+    color: #159f15;
+    font-size: 18px;
+}

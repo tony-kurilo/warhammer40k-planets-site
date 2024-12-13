@@ -1,16 +1,28 @@
 'use client'
-import {Suspense, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import Image from "next/image";
 import '../../../styles/planet_page.css';
 
 export default function Layout({planets_data}) {
-    const [activeButton, setActiveButton] = useState(null);
-    const [activeContent, setActiveContent] = useState("");
+    const [activeButton, setActiveButton] = useState(planets_data[0] ? `${planets_data[0].id}-descr` : null);
+    const [activeContent, setActiveContent] = useState(null);
+
+    useEffect(() => {
+        if (planets_data[0]) {
+            const formattedContent = planets_data[0].description.split('\n').map((line, index) => (
+                <p key={index} className="my-4">{line}</p>
+            ));
+            setActiveContent(formattedContent);
+        }
+    }, [planets_data]);
 
     const handleButtonClick = (content, eventId) => {
-        setActiveButton(eventId); // Устанавливаем активную кнопку
-        setActiveContent(content);
+        setActiveButton(eventId);
+        setActiveContent(content.split('\n').map((line, index) => (
+            <p key={index} className="my-4">{line}</p>
+        )));
     };
+
     return (
         <Suspense fallback={<div className={'text-primary-text-color'}>Loading data...</div>}>
             <div>
@@ -81,7 +93,7 @@ export default function Layout({planets_data}) {
                                         <button id={'descr-button'}
                                                 className={`event-button ${activeButton === `${planet.id}-descr` ? 'active' : ''}`}
                                                 onClick={() => handleButtonClick(planet.description, `${planet.id}-descr`)}>
-                                                Description
+                                            Description
                                         </button>
                                         {Array.isArray(planet.events) && planet.events.length > 0 && (
                                             <div className="flex">
@@ -100,10 +112,10 @@ export default function Layout({planets_data}) {
                                         )}
                                     </div>
                                     {/* Отображение активного контента */}
-                                    <div className="content-display">
+                                    <div className="content-display" key={activeButton}>
                                         {activeContent && (
                                             <div className="content-box">
-                                                <p>{activeContent}</p>
+                                                {activeContent}
                                             </div>
                                         )}
                                     </div>

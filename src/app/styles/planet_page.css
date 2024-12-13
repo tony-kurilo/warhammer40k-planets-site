@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 
+
 body {
     background-color: #121212;
+    font-family: 'VT323', monospace;
 }
 h1{
     font-size: 1.5rem;
@@ -54,13 +56,17 @@ h2{
     color:black;
 }
 .content-display{
-    text-align: center;
+    text-align: left;
 }
 .content-box{
     border: #6ffb6f solid 4px;
     width: 80%;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 0px auto;
+    padding: 40px 75px 40px 75px;
+}
+.content-box p {
+    line-height: 1.5;
+    margin: 0;
 }
 .responsive-image {
     width: 100%;
@@ -68,6 +74,36 @@ h2{
     object-fit: contain;
     max-width: 400px; /* Максимальная ширина для контроля */
     margin: 0 auto;   /* Центрирование */
+}
+
+@media (max-width: 320px) {
+    .center-container {
+        flex-wrap: wrap;
+    }
+    .event-button {
+        flex: 1 1 100%; /* 1 кнопка в строке */
+        text-align: center;
+    }
+}
+
+@media (max-width: 375px) {
+    .center-container {
+        flex-wrap: wrap;
+    }
+    .event-button {
+        flex: 1 1 calc(50% - 10px); /* 2 кнопки в строке с отступами */
+        text-align: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .center-container {
+        flex-wrap: wrap;
+    }
+    .event-button {
+        flex: 1 1 calc(25% - 10px); /* 4 кнопки в строке с отступами */
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -86,6 +122,9 @@ h2{
     .center-container{
         flex-direction: column;
     }
+    .content-box p {
+        font-size: 1rem;/* Или другой размер, который вам нужен */
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -97,6 +136,9 @@ h2{
     }
     .info-row {
         grid-template-columns: repeat(2, 1fr); /* Два элемента в строке */
+    }
+    .content-box p {
+        font-size: 1rem;/* Или другой размер, который вам нужен */
     }
 }
 
@@ -116,6 +158,9 @@ h2{
     p{
         font-size: 1.2rem;
     }
+    .content-box p {
+        font-size: 1.2rem;/* Или другой размер, который вам нужен */
+    }
 }
 
 @media (min-width: 1921px) {
@@ -133,5 +178,8 @@ h2{
     }
     p{
         font-size: 1.4rem;
+    }
+    .content-box p {
+        font-size: 1.4rem;/* Или другой размер, который вам нужен */
     }
 }
